@@ -70,3 +70,4 @@ function validarTelefono(e_telefono) {
     return "No se identifica la LADA del número";
 }
 
+    
