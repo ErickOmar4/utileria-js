@@ -29,7 +29,7 @@
     <script>
         function validarTodo() {
             let correoElectronico = document.getElementById("correo").value;
-            if (campoNoVacio("r_email", correoElectronico)) {
+            if (campoNoVacio("r_email", correoElectronico,"rellenelo")) {
                 if (validarCorreo(correoElectronico)) {
                     entradaValida("r_email", "correo");
                 } else {
@@ -38,7 +38,7 @@
             }
 
             let textoLetras = document.getElementById("texto").value;
-            if (campoNoVacio("r_texto", textoLetras)) {
+            if (campoNoVacio("r_texto", textoLetras,"rellenelo")) {
                 if (solo_letras(textoLetras)) {
                     entradaValida("r_texto", "texto");
                 } else {

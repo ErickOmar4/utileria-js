@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Demo · UIKit</title>
+
+  <link rel="stylesheet" href="ui-kit.css">
+
+  <style>
+    body {
+      margin: 0;
+      padding: 40px 16px;
+      background: #f2f4f7;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 40px;
+    }
+    h1 { font-size: 1.3rem; margin: 0; }
+    section {
+      max-width: 480px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      text-align: center;
+    }
+    section h2 { font-size: 0.95rem; color: #4b5563; margin: 0; }
+    button.demo-btn {
+      padding: 10px 18px;
+      border: none;
+      border-radius: 8px;
+      background: #3b5bfd;
+      color: #fff;
+      font-size: 0.9rem;
+      cursor: pointer;
+    }
+    button.demo-btn:hover { background: #2a46e0; }
+    pre {
+      width: 100%;
+      background: #11151c;
+      color: #d6e0ff;
+      padding: 12px;
+      border-radius: 8px;
+      font-size: 0.72rem;
+      overflow-x: auto;
+      text-align: left;
+    }
+  </style>
+</head>
+<body>
+  <h1>Librería UIKit — pruebas de Modal, Tooltip y Carrusel</h1>
+
+  <!-- ============ 1) MODAL ============ -->
+  <section>
+    <h2>1 Modal — desde JavaScript</h2>
+    <button class="demo-btn" id="btn-modal-js">Abrir modal (vía JS)</button>
+
+    <h2>Modal — solo con HTML (sin JS propio)</h2>
+    <button
+      class="demo-btn"
+      data-ui-modal
+      data-title="Hola desde HTML"
+      data-content="Este modal se abrió sin escribir ni una línea de JavaScript, solo con atributos data-*.">
+      Abrir modal (vía HTML)
+    </button>
+    <pre>&lt;button
+  data-ui-modal
+  data-title="Hola desde HTML"
+  data-content="Contenido del modal"&gt;
+  Abrir modal
+&lt;/button&gt;</pre>
+  </section>
+
+  <!-- ============ 2) TOOLTIP ============ -->
+  <section>
+    <h2>2) Tooltip — solo con HTML</h2>
+    <button class="demo-btn" data-ui-tooltip data-text="¡Este es un tooltip!" data-position="top">
+      Pasa el mouse aquí
+    </button>
+    <pre>&lt;button
+  data-ui-tooltip
+  data-text="¡Este es un tooltip!"
+  data-position="top"&gt;
+  Pasa el mouse aquí
+&lt;/button&gt;</pre>
+  </section>
+
+  <!-- ============ 3) CARRUSEL ============ -->
+  <section>
+    <h2>3) Carrusel — desde JavaScript</h2>
+    <div id="carrusel-demo"></div>
+    <pre>UIKit.carousel('#carrusel-demo', {
+  images: ['img1.jpg', 'img2.jpg', 'img3.jpg'],
+  interval: 3000
+});</pre>
+  </section>
+
+  <script src="ui-kit.js"></script>
+  <script>
+    // --- Ejemplo de modal iniciado desde JS ---
+    document.getElementById('btn-modal-js').addEventListener('click', function () {
+      UIKit.modal({
+        title: 'Modal desde JavaScript',
+        content: '<p>Puedes poner cualquier HTML aquí: listas, imágenes, formularios, etc.</p>',
+        onClose: function () {
+          console.log('El modal se cerró');
+        }
+      });
+    });
+
+    // --- Ejemplo de carrusel iniciado desde JS ---
+
+    function colorSlide(color, texto) {
+      var svg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 225">' +
+        '<rect width="400" height="225" fill="' + color + '"/>' +
+        '<text x="200" y="120" font-size="28" fill="#fff" text-anchor="middle" font-family="sans-serif">' + texto + '</text>' +
+        '</svg>';
+      return 'data:image/svg+xml,' + encodeURIComponent(svg);
+    }
+
+    UIKit.carousel('#carrusel-demo', {
+      images: [
+        colorSlide('#3b5bfd', 'Slide 1'),
+        colorSlide('#e63946', 'Slide 2'),
+        colorSlide('#2a9d4a', 'Slide 3')
+      ],
+      interval: 3000
+    });
+  </script>
+</body>
+</html>
