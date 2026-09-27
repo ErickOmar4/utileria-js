@@ -5,8 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Proyecto externo usando utileria.js</title>
 
-    <!-- Importamos la librería directamente desde jsDelivr -->
-    <script src="https://cdn.jsdelivr.net/gh/ErickOmar4/utileria2.js@main/js/utileria.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/ErickOmar4/utileria-js@main/utileria.js"></script>
 
     <style>
         body { font-family: system-ui, sans-serif; max-width: 420px; margin: 3rem auto; }
@@ -28,10 +27,6 @@
     <button type="button" onclick="validarTodo()">Validar</button>
 
     <script>
-        // Este es el mismo patrón que usas en tu propio proyecto:
-        // campoNoVacio -> función de validación -> entradaValida / entradaNo_valida
-        // Solo cambia que ahora las tres funciones vienen del CDN, no de un archivo local.
-
         function validarTodo() {
             let correoElectronico = document.getElementById("correo").value;
             if (campoNoVacio("r_email", correoElectronico)) {
