@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/gh/ErickOmar4/utileria2.js@main/js/utileria.min.js">
+    </script>
+    
+    
+</head>
+<body>
+
+    
+  <div class="campo">
+                    <label for="2e_contraseña">Ingrese su contraseña (mayúscula, minúscula, número, carácter especial, mínimo 8 caracteres)</label>
+                    <input type="text" id="e_contraseña" placeholder="Erick59#" required>
+                    <p class="respuestas" id="r_contraseña"></p>
+                </div>  
+                <button type="button" class="btn" onclick="validarFormulario()">Validar Formulario</button>
+
+    <script>  console.log(validarCorreo('a.com'));
+console.log(solo_letras('asdsa'));
+console.log(validarLongitud(23243,4));
+console.log(calcularEdad(5/18/2005));
+console.log(esMayorEdad(23));
+console.log(validarPassword("Ersdas8909#"));
+
+let contraseña = document.getElementById("e_contraseña").value;
+
+
+    function validarFormulario() { 
+        campoNoVacio("r_contraseña",contraseña);
+    /*
+
+        if(campoNoVacio("r_contraseña",contraseña)){
+        if (validarPassword(contraseña)) {
+        entradaValida("r_contraseña","la contraseña tiene el formato: ");
+    } else {
+        entradaNo_valida("r_contraseña","la contraseña tiene no tiene el formato : ");
+    }
+    }*/}
+
+    </script>
+</body>
+</html>
